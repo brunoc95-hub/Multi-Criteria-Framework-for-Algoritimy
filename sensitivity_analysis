@@ -1,0 +1,68 @@
+import numpy as np
+from electre_tri import matriz_ias, fronteiras, pref, indif, calcular_sigma, ias
+
+pesos_real = np.array([0.2986, 0.2543, 0.2721, 0.1751])
+vetos_base = np.array([15, 30, 25, 45])
+
+def classify_one(nota, w, v, lam):
+    s_b1 = calcular_sigma(nota, fronteiras[0], w, pref, indif, v)
+    s_b2 = calcular_sigma(nota, fronteiras[1], w, pref, indif, v)
+    if s_b1 >= lam: return 'A', s_b1, s_b2
+    elif s_b2 >= lam: return 'B', s_b1, s_b2
+    else: return 'C', s_b1, s_b2
+
+# ---------- 1. LAMBDA SWEEP (0.50 to 0.85, step 0.01) ----------
+print("="*70)
+print("1. LAMBDA SWEEP (weights and vetoes fixed at baseline)")
+print("="*70)
+lambdas = np.arange(0.50, 0.851, 0.01)
+prev_cat = {name: None for name in ias}
+flips = {name: [] for name in ias}
+for lam in lambdas:
+    for i, name in enumerate(ias):
+        cat, s1, s2 = classify_one(matriz_ias[i], pesos_real, vetos_base, lam)
+        if prev_cat[name] is not None and cat != prev_cat[name]:
+            flips[name].append((round(lam,2), prev_cat[name], cat))
+        prev_cat[name] = cat
+
+for name in ias:
+    print(f"{name:15s}: flip points (lambda, from, to) = {flips[name]}")
+
+# ---------- 2. VETO THRESHOLD SENSITIVITY (Explainability veto, +/-40%) ----------
+print()
+print("="*70)
+print("2. EXPLAINABILITY VETO THRESHOLD SWEEP (v2), lambda=0.65, weights=AHP-real")
+print("="*70)
+v2_range = np.arange(15, 51, 1)
+prev_cat_v = None
+flips_v = []
+for v2 in v2_range:
+    v = vetos_base.copy()
+    v[1] = v2
+    cat, s1, s2 = classify_one(matriz_ias[3], pesos_real, v, 0.65)  # SYS-BLACK-BOX
+    if prev_cat_v is not None and cat != prev_cat_v:
+        flips_v.append((v2, prev_cat_v, cat))
+    prev_cat_v = cat
+print(f"SYS-BLACK-BOX flip points as v2 (Explainability veto) varies 15-50: {flips_v}")
+
+# ---------- 3. MONTE CARLO OVER WEIGHT SPACE (Dirichlet around AHP-elicited) ----------
+print()
+print("="*70)
+print("3. MONTE CARLO: weight vectors sampled around AHP-elicited estimate")
+print("="*70)
+np.random.seed(42)
+N = 5000
+# Dirichlet concentration: scale so that std dev is roughly +/-15% relative to each weight
+alpha = pesos_real * 60  # concentration parameter (higher = tighter around mean)
+samples = np.random.dirichlet(alpha, size=N)
+
+results = {name: {'A':0,'B':0,'C':0} for name in ias}
+for w in samples:
+    for i, name in enumerate(ias):
+        cat, s1, s2 = classify_one(matriz_ias[i], w, vetos_base, 0.65)
+        results[name][cat] += 1
+
+print(f"N={N} weight vectors sampled (Dirichlet, concentrated around AHP-elicited weights, ~15% relative std)")
+for name in ias:
+    r = results[name]
+    print(f"{name:15s}: A={r['A']/N*100:5.1f}%  B={r['B']/N*100:5.1f}%  C={r['C']/N*100:5.1f}%")

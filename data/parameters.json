@@ -1,0 +1,58 @@
+{
+  "criteria": ["Safety", "Explainability", "Compliance", "Sustainability"],
+
+  "ahp_elicited_weights": {
+    "description": "Weights derived from the 6-respondent expert survey (Section 3.1 of the paper). This is the empirical output of ahp_weight_elicitation.py run against the (anonymized, email-stripped) survey response data.",
+    "Safety": 0.2986,
+    "Explainability": 0.2543,
+    "Compliance": 0.2721,
+    "Sustainability": 0.1751
+  },
+
+  "baseline_illustrative_weights": {
+    "description": "Baseline weight vector used for the worked example in Section 4.1-4.4 of the paper. Close to, but not identical to, the AHP-elicited weights; the difference is the subject of the robustness check in Section 4.5.",
+    "Safety": 0.29,
+    "Explainability": 0.25,
+    "Compliance": 0.25,
+    "Sustainability": 0.17
+  },
+
+  "electre_tri_thresholds": {
+    "indifference_q": [5, 5, 5, 5],
+    "preference_p": [10, 10, 10, 10],
+    "veto_v": [15, 30, 25, 45],
+    "cutting_level_lambda": 0.65
+  },
+
+  "boundary_profiles": {
+    "b1_certification_cut": [90, 70, 80, 65],
+    "b2_sandbox_cut": [70, 40, 50, 45]
+  },
+
+  "archetypes": {
+    "description": "Illustrative, hypothetical performance scores. NOT derived from disclosed data of any real manufacturer or system. See Section 4 disclaimer in the paper.",
+    "SYS-alpha": [95, 75, 95, 70],
+    "SYS-beta": [92, 60, 85, 95],
+    "SYS-XAI-UNB": [70, 95, 40, 85],
+    "SYS-BLACK-BOX": [98, 15, 70, 60]
+  },
+
+  "expert_panel_demographics": {
+    "n": 6,
+    "field_of_expertise": {
+      "Law, Regulation, and Public Policy": 3,
+      "Innovation Management / Technology Transfer": 2,
+      "Aerospace Engineering / Unmanned Aerial Systems": 1
+    },
+    "years_of_experience": {
+      "Over 15 years": 4,
+      "11 to 15 years": 1,
+      "6 to 10 years": 1
+    },
+    "affiliation": {
+      "Industry / Private Sector": 3,
+      "Academia / Research Institute": 3
+    },
+    "note": "Recruited via non-probabilistic convenience sampling from the authors' professional networks. E-mail addresses collected for coordination were deleted post-collection and are not part of this dataset."
+  }
+}

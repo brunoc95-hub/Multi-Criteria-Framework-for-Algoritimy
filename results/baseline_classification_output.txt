@@ -1,0 +1,5 @@
+=== BASELINE CHECK: script weights vs real AHP weights ===
+SYS-alpha       script_w: cat=B s_b1=0.25  |  real_w: cat=B s_b1=0.272  -> SAME
+SYS-beta        script_w: cat=B s_b1=0.17  |  real_w: cat=B s_b1=0.175  -> SAME
+SYS-XAI-UNB     script_w: cat=C s_b1=0.0  |  real_w: cat=C s_b1=0.0  -> SAME
+SYS-BLACK-BOX   script_w: cat=C s_b1=0.0  |  real_w: cat=B s_b1=0.0  -> DIFFERENT

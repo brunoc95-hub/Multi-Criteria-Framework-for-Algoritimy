@@ -1,0 +1,24 @@
+======================================================================
+Baseline illustrative (0.29/0.25/0.25/0.17)
+======================================================================
+SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.25, s_b2=0.96)
+SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.17, s_b2=0.96)
+SYS-XAI-UNB     -> REJECTED             (s_b1=0.0, s_b2=0.42)
+SYS-BLACK-BOX   -> REJECTED             (s_b1=0.0, s_b2=0.6121)
+
+======================================================================
+N=6 elicited, default1 (superseded)
+======================================================================
+SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.2721, s_b2=1.0001)
+SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.1751, s_b2=1.0001)
+SYS-XAI-UNB     -> REJECTED             (s_b1=0.0, s_b2=0.4294)
+SYS-BLACK-BOX   -> REGULATORY SANDBOX   (s_b1=0.0, s_b2=0.7335)
+
+======================================================================
+N=9 elicited, Harker-corrected (PRIMARY)
+======================================================================
+SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.1853, s_b2=0.9999)
+SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.0716, s_b2=0.9999)
+SYS-XAI-UNB     -> REJECTED             (s_b1=0.0, s_b2=0.4632)
+SYS-BLACK-BOX   -> REJECTED             (s_b1=0.0, s_b2=0.3882)
+

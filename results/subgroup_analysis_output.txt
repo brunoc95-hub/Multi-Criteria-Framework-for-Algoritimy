@@ -1,0 +1,42 @@
+==============================================================================
+Mean Harker-corrected weights by subgroup
+==============================================================================
+Legal/Policy (n=5)                 : Safety=42.0%, Explainability=36.4%, Compliance=12.4%, Sustainability=9.1%
+Technical, Aerospace+AI/CS (n=2)   : Safety=20.9%, Explainability=38.3%, Compliance=35.0%, Sustainability=5.8%
+Innovation Management (n=2)        : Safety=32.2%, Explainability=46.8%, Compliance=17.3%, Sustainability=3.7%
+Full panel (n=9)                   : Safety=35.1%, Explainability=39.2%, Compliance=18.5%, Sustainability=7.2%
+
+Absolute difference, Legal vs Technical (percentage points):
+  Safety              :  21.1 pts
+  Explainability      :   1.9 pts
+  Compliance          :  22.6 pts
+  Sustainability      :   3.4 pts
+
+==============================================================================
+ELECTRE TRI classification under each subgroup's weights
+(thresholds, veto, and lambda held at the baseline calibration)
+==============================================================================
+
+Legal/Policy (n=5):
+  SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.124, s_b2=1.000)
+  SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.091, s_b2=1.000)
+  SYS-XAI-UNB     -> REJECTED             (s_b1=0.000, s_b2=0.456)
+  SYS-BLACK-BOX   -> REJECTED             (s_b1=0.000, s_b2=0.436)
+
+Technical, Aerospace+AI/CS (n=2):
+  SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.350, s_b2=1.000)
+  SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.058, s_b2=1.000)
+  SYS-XAI-UNB     -> REJECTED             (s_b1=0.000, s_b2=0.441)
+  SYS-BLACK-BOX   -> REJECTED             (s_b1=0.000, s_b2=0.403)
+
+Innovation Management (n=2):
+  SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.173, s_b2=1.000)
+  SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.037, s_b2=1.000)
+  SYS-XAI-UNB     -> REJECTED             (s_b1=0.000, s_b2=0.505)
+  SYS-BLACK-BOX   -> REJECTED             (s_b1=0.000, s_b2=0.284)
+
+Full panel (n=9):
+  SYS-alpha       -> REGULATORY SANDBOX   (s_b1=0.185, s_b2=1.000)
+  SYS-beta        -> REGULATORY SANDBOX   (s_b1=0.072, s_b2=1.000)
+  SYS-XAI-UNB     -> REJECTED             (s_b1=0.000, s_b2=0.463)
+  SYS-BLACK-BOX   -> REJECTED             (s_b1=0.000, s_b2=0.388)

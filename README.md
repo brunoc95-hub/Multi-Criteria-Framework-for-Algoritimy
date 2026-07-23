@@ -38,13 +38,9 @@ This differs from the N=6 finding reported in earlier drafts, where `SYS-BLACK-B
 
 - **N=9 update:** panel grew from 6 to 9 respondents (3 new). Harker's (1987) procedure now applied to the two never-queried criterion pairs (Safety×Sustainability, Explainability×Sustainability) using the actual individual response data, replacing the N=6-era default value of 1. Primary weight vector changed from (0.2986/0.2543/0.2721/0.1751) to (0.3514/0.3916/0.1853/0.0716). Monte Carlo procedure changed from a Dirichlet distribution with an assumed dispersion parameter to a bootstrap resampling of the real individual respondent vectors. `SYS-BLACK-BOX` baseline classification changed from Regulatory Sandbox to Rejected, and is now robust to λ/veto-threshold perturbation (the earlier flip points no longer occur); residual sensitivity is now characterized via the bootstrap instead.
 
-## SMAA-TRI update
+## SMAA-TRI
 
 `smaa_tri.py` formalizes the robustness check as SMAA-TRI (Tervonen et al., 2009): weights (bootstrapped from the real N=9 panel) and the cutting level (\u03bb ~ U[0.60, 0.70]) are resampled jointly, and the script reports category acceptability indices alongside central weight vectors \u2014 including, for SYS-XAI-UNB and SYS-BLACK-BOX, the central weight vector for their minority (non-modal) outcome, characterizing what panel profile would flip each classification. This replaces the earlier ad hoc bootstrap-only Monte Carlo with a named, citable, established robustness-analysis method, and removes the "SMAA-TRI not applied" item from the paper's limitations.
-
-## Completeness note
-
-`subgroup_analysis.py` and `figures.py` were added after an audit found they had been run to produce results/figures reported in the paper but not originally committed to this repository. `subgroup_analysis.py` reproduces the legal/policy-vs-technical panel comparison discussed in Section 3.1; `figures.py` regenerates all four paper figures from the outputs of the other scripts.
 
 ## Requirements
 
@@ -56,7 +52,3 @@ pandas
 ## Citation
 
 If you use this code, please cite the paper (full citation to be added upon publication/preprint availability).
-
-## License
-
-Add a license (e.g., MIT) before making this repository public, if you intend for others to reuse the code.

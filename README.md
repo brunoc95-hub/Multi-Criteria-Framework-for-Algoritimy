@@ -15,10 +15,7 @@ sensitivity_analysis.py         # Section 4.5 — lambda sweep, veto-threshold s
 smaa_tri.py                     # Section 4.5 — formal SMAA-TRI (Tervonen et al., 2009): category
                                  #   acceptability indices + central weight vectors, weights and
                                  #   lambda resampled jointly
-subgroup_analysis.py            # Section 3.1 — legal/policy vs. technical subgroup weight
-                                 #   comparison and re-classification (panel-composition-bias check)
-figures.py                      # Regenerates all 4 paper figures from the computed results above
-results/                        # Saved output logs from running the scripts above
+
 ```
 
 ## Status of this repository
